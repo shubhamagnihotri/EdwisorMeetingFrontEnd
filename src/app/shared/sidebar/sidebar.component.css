@@ -1,0 +1,32 @@
+.example-container {
+    width: 100%;
+    min-height: 632px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
+  
+  .example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* .example-sidenav {
+    padding: 20px;
+  } */
+  /* mat-drawer{
+    background: rgba(48, 39, 39, 0.07);
+  } */
+  .toogle-btn{
+    background-color: white;
+    color: teal;
+    border: none;
+    
+  }
+  .iconClass{
+    height: 78px !important;
+  }
+ 
+  /* mat-drawer{
+      padding: 0px;
+  } */

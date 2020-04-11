@@ -1,0 +1,18 @@
+#notfound{
+    text-align: center;
+    background: black;
+}
+.notfound-404{
+    color:white;
+}
+
+.notFoundDiv{
+    text-align: center;
+  
+}
+body{
+    background: black !important;
+}
+.container-fluid{
+    background: black;
+}

@@ -1,0 +1,126 @@
+<div class="container-fluid">
+  <div class="row mt-5">
+    <div class="col-md-4 themed-grid-col">
+      <div class="btn-group">
+        <div
+          class="btn btn-sm btn-primary"
+          mwlCalendarPreviousView
+          [view]="view"
+          [(viewDate)]="viewDate"
+          (viewDateChange)="closeOpenMonthViewDay()"
+        >
+          Previous
+        </div>
+        <div
+          class="btn btn-sm btn-outline-secondary"
+          mwlCalendarToday
+          [(viewDate)]="viewDate"
+        >
+          Today
+        </div>
+        <div
+          class="btn btn-sm btn-primary"
+          mwlCalendarNextView
+          [view]="view"
+          [(viewDate)]="viewDate"
+          (viewDateChange)="closeOpenMonthViewDay()"
+        >
+          Next
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 themed-grid-col">
+      <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+    </div>
+    <div class="col-md-4 themed-grid-col">
+      <div class="btn-group">
+        <div
+          class="btn btn-primary"
+          (click)="setView(CalendarView.Month)"
+          [class.active]="view === CalendarView.Month"
+        >
+          Month
+        </div>
+        <!-- <div
+          class="btn btn-primary"
+          (click)="setView(CalendarView.Week)"
+          [class.active]="view === CalendarView.Week"
+        >
+          Week
+        </div>
+        <div
+          class="btn btn-primary"
+          (click)="setView(CalendarView.Day)"
+          [class.active]="view === CalendarView.Day"
+        >
+          Day
+        </div> -->
+      </div>
+    </div>
+    <div class="col-md-4 themed-grid-col" class="bootcalendarbtnToogleGroup">
+      <div class="btn-group" (click)="openDialog(this.viewDate)" *ngIf="userDetails.role =='admin'">
+        <div class="btn btn-primary" >
+          Add Meeting
+        </div>
+        <div class="btn btn-secondary " (click)="checkAllMeeting()">
+          {{userDetails.role == 'admin' ? 'User All Meeting':'My All Meetings'}}
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <!---for clanedar start-->
+  
+    <div class="col-md-12">
+      <mat-card class="mt-2 mb-5">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>
+            {{userDetails.role == 'admin' ? 'User Calendar':'My Calendar'}}
+          </mat-card-title>
+          <mat-card-subtitle>
+            {{userDetails.role == 'admin' ? 'Create Event':'Check Event'}}
+          </mat-card-subtitle>
+          <div style="right: 0px;" class="matcalendarbtnToogleGroup">
+            <button mat-raised-button color="primary" (click)="openDialog(this.viewDate)" *ngIf="userDetails.role =='admin'">Add Meeting</button>
+          </div>
+          
+          <div style="right: 0px;" class="ml-2" class="matcalendarbtnToogleGroup">
+            <button mat-raised-button color="primary" (click)="checkAllMeeting()" >{{userDetails.role == 'admin' ? 'User All Meeting':'My All Meetings'}}</button>
+          </div>
+        </mat-card-header>
+        <mat-card-content >
+          <!-------CALENDAR VIEW START-->
+          <div [ngSwitch]="view">
+            <mwl-calendar-month-view
+              *ngSwitchCase="CalendarView.Month"
+              [viewDate]="viewDate"
+              [events]="events"
+              [refresh]="refresh"
+              [activeDayIsOpen]="activeDayIsOpen"
+              (dayClicked)="dayClicked($event.day)"
+              (eventClicked)="handleEvent('Clicked', $event.event)"
+              (eventTimesChanged)="eventTimesChanged($event)"
+            >
+            </mwl-calendar-month-view>
+          </div>
+          <!-------CALENDAR VIEW eND-->
+        </mat-card-content>
+        <mat-card-actions>
+          <!-- <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button> -->
+        </mat-card-actions>
+      </mat-card>
+    
+    
+
+    </div>
+    <!---for clanedar end-->
+  </div>
+
+
+
+
+
+</div>

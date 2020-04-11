@@ -1,0 +1,179 @@
+<div class="formModal">
+<h1 mat-dialog-title *ngIf="data.show == false">
+  Create Meeting</h1>
+  <h1 mat-dialog-title *ngIf="data.show == true">
+    Meeting Details</h1>
+<form class="example-form" #meetingFormData="ngForm" method="post">
+<div mat-dialog-content>
+  <!-- <p>Crete Meeting (+ Details)</p> -->
+
+
+  <mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>Meeting Title</mat-label>
+    <input matInput type="text" [disabled]="data.show" required [(ngModel)]="data.meetingTitle" placeholder="Enter Meeting Title" name="meetingTitle"
+    #meetingTitle="ngModel">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-hint class="err-msg" *ngIf="meetingTitle.invalid && (meetingTitle.dirty || meetingTitle.touched)">
+      Meeting Title is required.
+    </mat-hint>
+    <mat-hint class="right-msg" *ngIf="meetingTitle.valid">
+      Perfect
+    </mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 100%;">
+ 
+    <mat-label>Input disabled</mat-label>
+    <input matInput [matDatepicker]="dp3" disabled required [(ngModel)]="data.meetingDate" placeholder="Enter Meeting Date" name="meetingDate"
+    #meetingDate="ngModel">
+    <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+    <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+    <mat-hint class="err-msg" *ngIf="meetingDate.invalid && (meetingDate.dirty || meetingDate.touched)">
+      Meeting Title is required.
+    </mat-hint>
+    <mat-hint class="right-msg" *ngIf="meetingDate.valid">
+      Perfect
+    </mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width:40%;">
+    <mat-label>start hours</mat-label>
+    <mat-select required [disabled]="data.show" [(ngModel)]="data.meetingStartTimeHour" placeholder="Enter Start Hour" name="meetingStartTimeHour"
+    #meetingStartTimeHour="ngModel">
+      <mat-option *ngFor="let hours of hours" [value]="hours">
+        {{hours}}
+      </mat-option>
+    </mat-select>
+    <mat-hint class="err-msg" *ngIf="meetingStartTimeHour.invalid && (meetingStartTimeHour.dirty || meetingStartTimeHour.touched)">
+     Start Hour required
+    </mat-hint>
+    <mat-hint class="right-msg" *ngIf="meetingStartTimeHour.valid">
+      Perfect
+    </mat-hint>
+  </mat-form-field>
+
+  <mat-form-field style="width: 30%;" appearance="outline">
+    <mat-label>start Minute</mat-label>
+    <mat-select required [disabled]="data.show" [(ngModel)]="data.meetingStartTimeSecond" placeholder="Enter start Minute" name="meetingStartTimeSecond"
+    #meetingStartTimeSecond="ngModel">
+      <mat-option *ngFor="let minutes of minutes" [value]="minutes">
+        {{minutes}}
+      </mat-option>
+    </mat-select>
+    <mat-hint class="err-msg" *ngIf="meetingStartTimeSecond.invalid && (meetingStartTimeSecond.dirty || meetingStartTimeSecond.touched)">
+     required
+     </mat-hint>
+     <mat-hint class="right-msg" *ngIf="meetingStartTimeSecond.valid">
+       Perfect
+     </mat-hint>
+  </mat-form-field>
+
+  <mat-form-field style="width: 30%;" appearance="outline">
+    <mat-label>Time Frame</mat-label>
+    <mat-select required [disabled]="data.show" [(ngModel)]="data.meetingStartTimeFrame" placeholder="Enter Time Frame" name="meetingStartTimeFrame"
+    #meetingStartTimeFrame="ngModel">
+      <mat-option [value]="'AM'">
+        {{'AM'}}
+      </mat-option>
+      <mat-option [value]="'PM'">
+        {{'PM'}}
+      </mat-option>
+    </mat-select>
+    <mat-hint class="err-msg" *ngIf="meetingStartTimeFrame.invalid && (meetingStartTimeFrame.dirty || meetingStartTimeFrame.touched)">
+     required
+     </mat-hint>
+     <mat-hint class="right-msg" *ngIf="meetingStartTimeFrame.valid">
+       Perfect
+     </mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width:40%;">
+    <mat-label>End hours</mat-label>
+    <mat-select required [disabled]="data.show" [(ngModel)]="data.metingEndTimeHour" placeholder="Enter End hours" name="metingEndTimeHour"
+    #metingEndTimeHour="ngModel">
+      <mat-option *ngFor="let hours of hours" [value]="hours">
+        {{hours}}
+      </mat-option>
+    </mat-select>
+    <mat-hint class="err-msg" *ngIf="metingEndTimeHour.invalid && (metingEndTimeHour.dirty || metingEndTimeHour.touched)">
+   required
+     </mat-hint>
+     <mat-hint class="right-msg" *ngIf="metingEndTimeHour.valid">
+       Perfect
+     </mat-hint>
+  </mat-form-field>
+
+  <mat-form-field style="width: 30%;" appearance="outline">
+    <mat-label>End Minute</mat-label>
+    <mat-select required [disabled]="data.show" [(ngModel)]="data.metingEndTimeSecond" placeholder="Enter End Minute" name="metingEndTimeSecond"
+    #metingEndTimeSecond="ngModel">
+      <mat-option *ngFor="let minutes of minutes" [value]="minutes">
+        {{minutes}}
+      </mat-option>
+    </mat-select>
+    <mat-hint class="err-msg" *ngIf="metingEndTimeSecond.invalid && (metingEndTimeSecond.dirty || metingEndTimeSecond.touched)">
+     required
+     </mat-hint>
+     <mat-hint class="right-msg" *ngIf="metingEndTimeSecond.valid">
+       Perfect
+     </mat-hint>
+  </mat-form-field>
+
+  <mat-form-field style="width: 30%;" appearance="outline">
+    <mat-label>Time Frame</mat-label>
+    <mat-select required [disabled]="data.show" [(ngModel)]="data.meetingEndTimeFrame" placeholder="Meeting End Frame" name="meetingEndTimeFrame"
+    #meetingEndTimeFrame="ngModel">
+      <mat-option [value]="'AM'">
+        {{'AM'}}
+      </mat-option>
+      <mat-option [value]="'PM'">
+        {{'PM'}}
+      </mat-option>
+    </mat-select>
+    <mat-hint class="err-msg" *ngIf="meetingEndTimeFrame.invalid && (meetingEndTimeFrame.dirty || meetingEndTimeFrame.touched)">
+      required
+     </mat-hint>
+     <mat-hint class="right-msg" *ngIf="meetingEndTimeFrame.valid">
+       Perfect
+     </mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>Meeting Location</mat-label>
+    <input matInput [disabled]="data.show" required type="text" [(ngModel)]="data.meetingLocation" placeholder="Meeting Location" name="meetingLocation"
+    #meetingLocation="ngModel">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-hint class="err-msg" *ngIf="meetingLocation.invalid && (meetingLocation.dirty || meetingLocation.touched)">
+      Meeting Location required
+     </mat-hint>
+     <mat-hint class="right-msg" *ngIf="meetingLocation.valid">
+       Perfect
+     </mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>Meeting Description</mat-label>
+    <textarea required [disabled]="data.show" matInput [(ngModel)]="data.meetingDescription" placeholder="Enter Description" name="meetingDescription"
+    #meetingDescription="ngModel"></textarea>
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-hint class="err-msg" *ngIf="meetingDescription.invalid && (meetingDescription.dirty || meetingDescription.touched)">
+      Meeting Description required
+     </mat-hint>
+     <mat-hint class="right-msg" *ngIf="meetingDescription.valid">
+       Perfect
+     </mat-hint>
+  </mat-form-field>
+
+ 
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" >
+    <span *ngIf="data.show">Ok</span>
+    <span *ngIf="!data.show">No Thanks</span>
+    
+  </button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial [disabled]="meetingFormData.form.invalid" *ngIf="!data.show">Ok</button>
+</div>
+</form>
+<!-- (click)="createNewMeeting(meetingFormData,data)"> -->
+</div>

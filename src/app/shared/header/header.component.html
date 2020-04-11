@@ -1,0 +1,42 @@
+
+<!-------haeder start ---------->
+<div class="row">
+  <!-- <div class="col-md-12"> -->
+      <mat-toolbar color="primary">
+        <mat-toolbar-row>
+
+        <button mat-mini-fab class="ml-2 toogle-btn" (click)="toggleMenu()" mat-raised-button>
+          <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">format_align_justify</mat-icon>
+        </button>
+
+        <span class="example-spacer"></span>
+          <img src="../../../assets/calendarorig.png" class="classLogo logoImg"> 
+          <span class="ml-3" class="appNameHeader">Meeting Planner</span>
+          <span class="example-spacer mr-md-auto"></span>
+         
+           <span class="my-2 my-md-0 mr-md-3" class="profileLogoSpan">
+           <a class="p-2" style="color:white" id="#loginPersonName" class="userappNameHeader">Hello {{userDetails.role == 'admin'? userDetails.firstName+'-admin' : userDetails.firstName+'-user'}}</a> 
+            <img src="../../../assets/dummyProfile.png"  [matMenuTriggerFor]="menu" class="ml-4 logoImg">
+           
+            <mat-menu #menu="matMenu">
+            
+              <button mat-menu-item (click)="goToLogout()">
+               
+                <mat-icon>logout</mat-icon>
+                <span>Logout</span>
+              </button>
+            </mat-menu>
+          </span>
+        </mat-toolbar-row>
+        
+        <mat-toolbar-row class="topNavbar">
+          <button mat-button (click)="goRoutingPage('dashboard/all-users')" *ngIf="userDetails.role == 'admin'">All Users</button>
+          <button mat-button (click)="goRoutingPage('dashboard/user-calendar',userDetails.userId)" *ngIf="userDetails.role == 'user'">My Calendar</button>
+          <button mat-button (click)="goRoutingPage('dashboard/view-user-all-meeting',userDetails.userId)" *ngIf="userDetails.role == 'user'">My All Meeting</button>      
+          
+        </mat-toolbar-row>
+      </mat-toolbar>
+    <!-- </div> -->
+</div>
+
+<!-------haeder end ---------->

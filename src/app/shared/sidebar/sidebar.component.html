@@ -1,0 +1,62 @@
+
+<!--body start-->
+<div class="row">
+    <!----------side nav start  -->
+  <div class="col-md-12">
+  <mat-drawer-container class="" autosize >
+    <mat-drawer #drawer class="example-sidenav" mode="side" opened [class.bigSideMenu]="true" id="#bigSideMenu" [style.width]="sideBarDetail.width">
+      <!-- named menu start-->
+      <mat-list  *ngIf="!sideBarDetail.showIconMenu" >
+
+        <mat-list-item routerLinkActive="active-link" *ngIf="userDetails.role == 'admin'"> 
+          <button mat-button (click)="goRoutingPage('dashboard/all-users')">All Users</button>        
+        </mat-list-item>
+
+        <mat-list-item routerLinkActive="active-link" *ngIf="userDetails.role == 'user'"> 
+          <button mat-button (click)="goRoutingPage('dashboard/user-calendar',userDetails.userId)">My Calendar</button>
+        </mat-list-item>
+        <mat-list-item routerLinkActive="active-link" *ngIf="userDetails.role == 'user'"> 
+          <button mat-button (click)="goRoutingPage('dashboard/view-user-all-meeting',userDetails.userId)">My All Meeting</button>
+        </mat-list-item>
+       
+
+      </mat-list>
+       <!-- named menu ended-->
+       <mat-list *ngIf="sideBarDetail.showIconMenu">
+        <mat-list-item class="iconClass" *ngIf="userDetails.role == 'admin'"> 
+          <button mat-fab color="primary" (click)="goRoutingPage('dashboard/all-users')">
+           
+            <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon" >supervised_user_circle</mat-icon>
+          </button>
+        </mat-list-item>
+        <mat-list-item class="iconClass" *ngIf="userDetails.role == 'user'"> 
+          <button mat-fab color="primary" (click)="goRoutingPage('dashboard/view-user-all-meeting',userDetails.userId)">
+            <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">calendar_today</mat-icon>
+          </button>
+        </mat-list-item>
+        <mat-list-item class="iconClass" *ngIf="userDetails.role == 'user'"> 
+          <button mat-fab color="primary" (click)="goRoutingPage('dashboard/view-user-all-meeting',userDetails.userId)">
+            <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">meeting_room</mat-icon>
+          
+          </button>
+        </mat-list-item>
+        <!-- <mat-list-item class="iconClass">
+          <button mat-fab color="primary">
+            <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">chat</mat-icon>
+          </button>
+        </mat-list-item> -->
+      </mat-list>
+
+    </mat-drawer>
+
+
+    <!-- icon menu start -->
+
+
+    <!----------side nav end  -->
+    <!----------routes start  -->
+    <router-outlet></router-outlet> 
+ 
+  </mat-drawer-container>
+</div>
+</div>

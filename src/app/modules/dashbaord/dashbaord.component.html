@@ -1,0 +1,65 @@
+<!--  
+    <div class="example-sidenav-content">
+      asdkhasdhgdjhg
+      <button type="button" mat-button (click)="drawer.toggle()">
+        Toggle sidenav
+      </button>
+    </div>
+  -->
+
+    <div class="container-fluid">
+      <mat-card class="mt-5 mb-5">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title class="userMeetingHeading">
+            {{userDetails.role == 'admin'? 'User All Meeting' : "My All Meeting"}}
+          </mat-card-title>
+          <mat-card-subtitle class="userMeetingHeading"> {{userDetails.role == 'admin'? 'User Meeting' : userDetails.firstName+'-user'}}</mat-card-subtitle>
+          <div style="right: 0px;">
+            <button mat-raised-button color="primary" (click)="goToCalendarPage()">{{userDetails.role == 'admin'? '+ Meeting':'Go to Calendar'}}</button>
+           
+          </div>
+        </mat-card-header>
+        <mat-card-content class="userTable">
+          <table class="table table-striped table-dark">
+            <thead>
+              <tr>
+                <th scope="col">Sr. No.</th>
+                <th scope="col">Meeting Title</th>
+                <th scope="col">Meeting date</th>
+                <th scope="col">Start Time</th>
+                <th scope="col">End Time</th>
+                <!-- <th scope="col"></th>
+                <th scope="col">online</th> -->
+              </tr>
+            </thead>
+            <tbody >
+              <tr *ngFor="let allMeetings of allMeetings;let i = index;">
+                <th scope="row">{{ i+1 }}</th>
+                <td>{{ allMeetings.meetingTitle | uppercase }}</td>
+                <td>{{ allMeetings.meetingDate | date:'d-M-y' }}</td>
+                <td>{{ allMeetings.meetingStartTimeHour }} : {{ allMeetings.meetingStartTimeSecond <= 9 ? '0'+ allMeetings.meetingStartTimeSecond : allMeetings.meetingStartTimeSecond }} : {{ allMeetings.meetingStartTimeFrame}}</td>
+                <td>{{ allMeetings.metingEndTimeHour }} : {{allMeetings.metingEndTimeSecond <=9 ? '0'+ allMeetings.metingEndTimeSecond :allMeetings.metingEndTimeSecond }} : {{allMeetings.meetingEndTimeFrame }}</td>
+                <!-- <td><button mat-raised-button color="warn" (click)="goToCalendarNavigate(userData.userId)">+ Event</button></td>
+                <td><button mat-raised-button color="warn"><i class="material-icons">remove_red_eye</i></button></td>
+                <td><span class="badge badge-info">offline</span></td>  -->
+              </tr>
+              <tr *ngIf="!allMeetings || allMeetings.length == 0">
+                <td colspan="6">No Record Found</td>
+              </tr>
+            </tbody>
+            </table>
+        </mat-card-content>
+        <mat-card-actions>
+          <div style="text-align: right;">
+            <!-- <button mat-stroked-button color="primary" (click)="paginateData('prev')">Prev</button>
+            <button mat-stroked-button color="primary" (click)="paginateData('next')">Next</button> -->
+            <!-- <button mat-button>LIKE</button>
+            <button mat-button>SHARE</button> -->
+          </div>
+        
+        </mat-card-actions>
+      </mat-card>
+    
+      
+    </div>

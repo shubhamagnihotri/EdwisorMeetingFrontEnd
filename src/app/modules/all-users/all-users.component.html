@@ -1,0 +1,59 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-md-12">
+    <mat-card class="mt-5 mb-5">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>All Users</mat-card-title>
+        <mat-card-subtitle>user list</mat-card-subtitle>
+        <div style="right: 0px;">
+          <!-- <button mat-raised-button color="primary">Add Users</button> -->
+        
+        </div>
+      </mat-card-header>
+      <mat-card-content class="userTable">
+        <table class="table table-striped table-dark">
+          <thead>
+            <tr>
+              <th scope="col">Number</th>
+              <th scope="col">FullName</th>
+              <th scope="col">Mobile Number</th>
+              <th scope="col">Email</th>
+              <th scope="col">Add Meeting</th>
+              <th scope="col">Check Meeting</th>
+              <!-- <th scope="col">online</th> -->
+            </tr>
+          </thead>
+          <tbody >
+            <tr *ngFor="let userData of userData;let i = index;">
+              <th scope="row">{{ '#' }}</th>
+              <td>{{ userData.firstName+' '+userData.lastName | uppercase}}</td>
+              <td>{{ userData.mobileNumber }}</td>
+              <td>{{ userData.email }}</td>
+              <td><button mat-raised-button color="warn" (click)="goToCalendarNavigate(userData.userId)">+ Event</button></td>
+              <td><button mat-raised-button color="warn" (click)="gotoViewAllMeeting(userData.userId)"><i class="material-icons">remove_red_eye</i></button></td>
+              <!-- <td><span class="badge badge-info">offline</span></td>  -->
+            </tr>
+           
+            <tr *ngIf="!userData || userData.length == 0">
+              <td colspan="6">No Record Found</td>
+            </tr>
+          </tbody>
+          </table>
+      </mat-card-content>
+      <mat-card-actions>
+        <div style="text-align: right;">
+          <button mat-stroked-button color="primary" (click)="paginateData('prev')">Prev</button>
+          <button mat-stroked-button color="primary" (click)="paginateData('next')">Next</button>
+          <!-- <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button> -->
+        </div>
+      
+      </mat-card-actions>
+    </mat-card>
+    </div>
+  </div>
+
+  
+</div>

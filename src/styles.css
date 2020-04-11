@@ -1,1 +1,193 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+@import '~bootstrap/dist/css/bootstrap.min.css'; 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.blue-snackbar {
+    background: #2196F3;
+}
+
+.red-snackbar {
+    background: #F44336;
+}
+.green-snackbar{
+    background: green;
+}
+
+.err-msg{
+    color:red;
+}
+
+.right-msg{
+    color:forestgreen;
+}
+.example-header-image {
+    background-image: url('http://localhost:4200/assets/dummyProfile.png');
+    background-size: cover;
+  }
+  .bigSideMenu{
+    width: 20%;
+  }   
+  .smallSideMenu{
+    width: 5%;
+  }  
+
+  .toogle-btn{
+    background-color: white;
+    color: teal;
+    border: none;
+    
+  }
+  .classLogo{
+    margin-left: 1rem!important;
+  }
+  .logoImg{
+    width: 50px;
+    height: 50px;
+  }
+  .topNavbar{
+      display: none !important;
+  }
+  .bootcalendarbtnToogleGroup{
+    display: none !important;
+  }
+  .userTable{
+    overflow-x: scroll;
+  }
+  mat-drawer-container{
+    min-height: 671px;
+  }
+  @media only screen and (max-device-width:480px){
+    .bigSideMenu{
+      display: none !important;
+  }
+  .logoImg{
+      width: 45px;
+      height: 45px;
+  }
+  .smallSideMenu{
+      width: none !important;
+    }  
+    .toogle-btn{
+      display: none !important;
+    }
+    .appNameHeader{
+      font-size: 13px;
+    }
+    .userappNameHeader{
+      font-size: 13px;
+      position: absolute;
+      color: rgb(121, 49, 49);
+      right: 0px;
+      margin-top: 39px;
+    }
+    .profileLogoSpan{
+      position: absolute;
+      right: 15px;
+    }
+    .topNavbar{
+      display: block !important;
+    }
+    .matcalendarbtnToogleGroup{
+      display: none !important;
+    }
+    .bootcalendarbtnToogleGroup{
+      display: inline !important;
+      margin-top: 10px;
+      margin-left: 14px;
+    
+    }
+    .userMeetingHeading{
+      font-size: small !important;
+    }
+    .footerHeading{
+      font-size: 9px;
+    }
+    .formModal{
+      width: 100% !important;
+    }
+    /* div[id^='cdk-overlay-']{
+      width: 100% !important;
+    } */
+    /* #cdk-overlay-1{
+      width: 100% !important;
+    }
+    #cdk-overlay-9{
+      width: 100% !important;
+    }
+    #cdk-overlay-2{
+      width: 100% !important;
+    } */
+    /* .cdk-overlay-pane{
+      width: 100% !important;
+    } */
+  
+  }
+  @media only screen and (min-device-width: 481px) and (max-device-width:768px){
+    .bigSideMenu{
+        display: none !important;
+    }
+    .logoImg{
+        width: 45px;
+        height: 45px;
+    }
+    .smallSideMenu{
+        width: none !important;
+      }  
+      .toogle-btn{
+        display: none !important;
+      }
+      .appNameHeader{
+        font-size: 13px;
+      }
+      .userappNameHeader{
+        font-size: 13px;
+      }
+      .profileLogoSpan{
+        position: absolute;
+        right: 19px;
+      }
+      .topNavbar{
+        display: block !important;
+      }
+      .matcalendarbtnToogleGroup{
+        display: none !important;
+      }
+      .bootcalendarbtnToogleGroup{
+        display: inline !important;
+        margin-left: 14px;
+        margin-top: 10px;
+      }
+      .userMeetingHeading{
+        font-size: small !important;
+      }
+      .footerHeading{
+        font-size: 14px;
+      }
+      /* #cdk-overlay-1{
+        width: 80% !important;
+      }
+      #cdk-overlay-9{
+        width: 80% !important;
+      }
+      #cdk-overlay-2{
+        width: 80% !important;
+      } */
+      /* div[id^='cdk-overlay-']{
+        width: 80% !important;
+      } */
+      
+  }
+  
+  
+  @media only screen and (min-device-width: 992) and (max-device-width:3000px){
+    /* .modal{
+        width: 80%;
+        margin: 95px 89px;
+    } */
+  
+  }
