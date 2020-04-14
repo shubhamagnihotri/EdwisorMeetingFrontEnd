@@ -27,17 +27,17 @@ export class AppComponent implements OnInit {
   }
 
   checkRoute(){
-        // let userDetails= this.auth.getFromLocalStore('userDetails');
-        // this.userDetails = userDetails;
-        // if(this.userDetails){
-        //   if(this.userDetails.role =="admin"){ 
-        //     this.route.navigate(['dashboard','all-users']);
-        //   }else{
-        //     this.route.navigate(['dashboard/user-calendar',this.userDetails.userId]);
-        //   }
-        // }else{
-        //   this.route.navigate(['auth'])
-        // }
+        let userDetails= this.auth.getFromLocalStore('userDetails');
+        this.userDetails = userDetails;
+        if(this.userDetails){
+          if(this.userDetails.role =="admin"){ 
+            this.route.navigate(['dashboard','all-users']);
+          }else{
+            this.route.navigate(['dashboard/user-calendar',this.userDetails.userId]);
+          }
+        }else{
+          this.route.navigate(['auth'])
+        }
   }
     
 
